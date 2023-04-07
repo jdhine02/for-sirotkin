@@ -1,0 +1,125 @@
+{
+    "BlockType" : "stack",
+    "Orientation" : "Vertical",
+    "Width" : 329,
+    "Height" : 478,
+    "MarginBottom" : 150,
+    "MarginTop": 100,
+    "BackgroundImage" : "images/lineup/card_one_driver.png",
+    "Items" : [
+        {
+            "BlockType" : "text",
+            "Source" : "<header>",
+            "FontSize" : 28,
+            "MarginTop" : 22,
+            "Foreground" : "{GoldText}",
+            "FontName" : "{FontNameBold}",
+            "HorizontalAlignment" : "Center"
+        },
+        {
+            "BlockType" : "Itemstack",
+            "Orientation" : "Horizontal",
+            
+            "ItemStackOptions" : {
+                "ItemSource" : "{Session.DriverDayDriver.Name}",
+                "Template" : {
+                    "BlockType" : "dock",
+                    "Orientation" : "Vertical",
+                    "BackgroundImage" : "images/card_blank.png",
+                    "Width" : 319,
+                    "Height" : 415,
+                    "Items" : [
+                        {
+                            "BlockType" : "dock",
+                            "Orientation" : "Horizontal",
+                            "Items": [
+                                {
+                                    "BlockType" : "stack",
+                                    "Orientation" : "Vertical",
+                                    "HorizontalAlignment" : "Left",
+                                    "Items" : [
+                                        {
+                                            "BlockType" : "text",
+                                            "Source" : "{Session.DriverDayDriver.RaceNumber}",
+                                            "Foreground" : "{GoldText}",
+                                            "FontName" : "{FontNameBold}",
+                                            "FontSize" : 40,
+                                            "MarginLeft" : 40,
+                                            "MarginTop" : 55,
+                                            "TextOptions" : {
+                                                "HorizontalAlignment" : "Center"
+                                            },
+                                            "Triggers" : [
+                                                {
+                                                    "Condition" : "{Session.DriverDayDriver.RaceNumber, Converter=NumberLess, Parameter=10}",
+                                                    "Property" : "Source",
+                                                    "Value" : "0{Session.DriverDayDriver.RaceNumber}"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "BlockType" : "image",
+                                            "Source" : "images/logo_{Session.DriverDayDriver.GamePlatform}.png",
+                                            "Height" : 40,
+                                            "MarginLeft" : 36,
+                                            "MarginTop" : 8
+                                        },
+                                        {
+                                            "BlockType": "image",
+                                            "Height": 25,
+                                            "MarginTop" : 29,
+                                            "MarginLeft" : 35,
+                                            "VerticalAlignment": "Center",
+                                            "ImageOptions": {
+                                                "Path": "images/flags/flag_{Session.DriverDayDriver.Nationality.Code}.png",
+                                                "VerticalAlignment": "Center"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "BlockType" : "image",
+                                    "HorizontalAlignment" : "Right",
+                                    "Source" : "images/suit/{Item.Team.Name}_{Item.SeatPosition}.png",
+                                    "Width" : 250,
+                                    "MarginTop" : 30,
+                                    "Triggers" : [
+                                        {
+                                            "Condition" : "{F1Mode, Converter=BoolReverse}",
+                                            "Setters" : [
+                                                {
+                                                    "Property" : "Source",
+                                                    "Value" : "images/suit/{Session.DriverDayDriver.Name}.png"
+                                                }
+                                            ]
+                                           
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "BlockType" : "text",
+                            "Source" : "{Session.DriverDayDriver.Name}",
+                            "Foreground" : "#ffffff",
+                            "FontName" : "{FontNameBold}",
+                            "FontSize" : 25,
+                            "MarginLeft" : -10,
+                            "MarginTop" : 10,
+                            "HorizontalAlignment" : "Center"
+                        },
+                    ]
+                }
+            }
+        },
+        {
+            "BlockType" : "image",
+            "Source" : "images/cars/{Item.Team.Name}.png",
+            "Width" : 340,
+            "PaddingTop" : -20,
+            "VerticalAlignment": "Bottom",
+            "HorizontalAlignment": "Center"
+        }
+    ]
+}
+
